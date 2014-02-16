@@ -1,0 +1,52 @@
+defaults: &defaults
+  # Enable or disable the CloudTempfile functionality (Default: true)
+  # enabled: true
+  <%- if aws? -%>
+  fog_provider: "AWS"
+  aws_access_key_id: "<%= aws_access_key_id %>"
+  aws_secret_access_key: "<%= aws_secret_access_key %>"
+  # The name of Amason S3 Bucket
+  fog_directory: "<%= fog_directory %>"
+  # You may need to specify what region your storage bucket is in. This may increase upload performance by configuring your region
+  # fog_region: "us-east-1"
+  # To use AWS reduced redundancy storage.
+  # (http://aws.amazon.com/about-aws/whats-new/2010/05/19/announcing-amazon-s3-reduced-redundancy-storage/)
+  # aws_reduced_redundancy: true
+  <%- elsif google? -%>
+  fog_provider: "Google"
+  fog_directory: "<%= fog_directory %>"
+  google_storage_access_key_id: "<%= google_storage_access_key_id %>"
+  google_storage_secret_access_key: "<%= google_storage_secret_access_key %>"
+  <%- elsif rackspace? -%>
+  fog_provider: "Rackspace"
+  fog_directory: "name_of_container"
+  rackspace_username: "<%= rackspace_username %>"
+  rackspace_api_key: "<%= rackspace_api_key %>"
+  # if you need to change rackspace_auth_url (e.g. if you need to use Rackspace London)
+  # rackspace_auth_url: "https://lon.identity.api.rackspacecloud.com/v2.0"
+  <%- end -%>
+  # (String) This is a string file path which will be appended to the filename
+  # prefix: "<%= ENV['RAILS_ENV'] %>/tmp/"
+  # (Boolean) When true, the file publicly accessible. When false (default), a authenticated url will attempt to be generated
+  # public: true
+  # (Integer) The number of seconds the authenticated url will be valid (600 seconds = 10 minutes)
+  # expiry: 600
+  # (Boolean) When true, the clean up task (CloudTempfile.clear) will be able to run. Perfect for a cron clean up! ;)
+  # clean_up: true
+  # (Integer) The number of seconds the authenticated url will be valid (3600 seconds = 1 hour)
+  # clean_up_older_than: 3600
+  # (Boolean) Useful for environments such as Heroku
+  # fail_silently: true
+development:
+  <<: *defaults
+  enabled: false
+
+test:
+  <<: *defaults
+  enabled: false
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

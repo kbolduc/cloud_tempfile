@@ -1,0 +1,22 @@
+defaults: &defaults
+  fog_provider: "AWS"
+  aws_access_key_id: "xxxx"
+  aws_secret_access_key: "zzzz"
+  fog_region: "us-east-1"
+
+development:
+  <<: *defaults
+  fog_directory: "rails_app_development"
+
+test:
+  <<: *defaults
+  fog_directory: "rails_app_test"
+
+staging:
+  <<: *defaults
+  enabled: false
+  fog_directory: "rails_app_staging"
+
+production:
+  <<: *defaults
+  fog_directory: "rails_app_production"
