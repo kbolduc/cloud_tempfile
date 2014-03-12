@@ -86,6 +86,7 @@ The generator will create a Rails initializer at `config/initializers/cloud_temp
 
 ``` ruby
 CloudTempfile.configure do |config|
+  config.enabled = true
   config.fog_provider = 'AWS'
   config.fog_directory = ENV['FOG_DIRECTORY']
   config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
@@ -110,6 +111,7 @@ The generator will create a YAML file at `config/cloud_tempfile.yml`.
 
 ``` yaml
 defaults: &defaults
+  enabled: true
   fog_provider: "AWS"
   fog_directory: "rails-app-assets"
   aws_access_key_id: "<%= ENV['AWS_ACCESS_KEY_ID'] %>"
@@ -122,9 +124,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  enabled: false
 
 test:
   <<: *defaults
+  enabled: false
 
 production:
   <<: *defaults
@@ -140,7 +144,8 @@ CloudTempfile.config.fog_provider == ENV['FOG_PROVIDER']
 
 #### CloudTempfile (optional)
 
-* **enabled**: (`true, false`) when false, will disable CloudTempfile and local Tempfile will be created instead. **default:** `'true'` (enabled)
+* **enabled**: (`true, false`) when false, will disable CloudTempfile and local Tempfile will be created instead.
+* **default:** `'false'` (disabled)
 
 #### Fog (Required)
 * **fog\_provider**: your storage provider *AWS* (S3) or *Rackspace* (Cloud Files) or *Google* (Google Storage)
