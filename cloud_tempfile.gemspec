@@ -7,13 +7,13 @@ require "cloud_tempfile/version"
 Gem::Specification.new do |s|
   s.name        = "cloud_tempfile"
   s.version     = CloudTempfile::VERSION
-  s.date        = "2014-02-16"
+  s.date        = "2014-03-12"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Kevin Bolduc"]
   s.email       = ["kevin.bolduc@gmail.com"]
-  s.homepage    = "https://github.com/kbolduc/CloudTempfile"
+  s.homepage    = "https://github.com/kbolduc/cloud_tempfile"
   s.summary     = %q{Tempfile creation directly on cloud storage (S3, Google, Rackspace etc] which can be utilized in a Ruby application}
-  s.description = %q{Save any CloudTempfile object and it will be directly persisted to the cloud!}
+  s.description = %q{Tempfile creation directly on cloud storage (S3, Google, Rackspace etc] which can be utilized in a Ruby application}
   s.license     = 'MIT'
 
   # rubyforge
