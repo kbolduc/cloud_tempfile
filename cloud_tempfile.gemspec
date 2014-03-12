@@ -11,13 +11,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Kevin Bolduc"]
   s.email       = ["kevin.bolduc@gmail.com"]
-  s.homepage    = "https://github.com/kbolduc/cloud_tempfile"
+  s.homepage    = "http://github.com/kbolduc/cloud_tempfile"
   s.summary     = %q{Tempfile creation directly on cloud storage (S3, Google, Rackspace etc] which can be utilized in a Ruby application}
   s.description = %q{Tempfile creation directly on cloud storage (S3, Google, Rackspace etc] which can be utilized in a Ruby application}
   s.license     = 'MIT'
 
   # rubyforge
-  #s.rubyforge_project = "cloud_tempfile"
+  s.rubyforge_project = "cloud_tempfile"
 
   s.add_dependency('fog', ">= 1.8.0")
   s.add_dependency('activemodel')
