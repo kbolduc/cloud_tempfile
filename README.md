@@ -193,16 +193,6 @@ production:
   fog_region: 'eu-west-1'
 ```
 
-## Fail Silently
-
-With the `fail_silently` option enabled, when running `rake assets:precompile` CloudTempfile will never throw an error due to missing configuration variables.
-
-With the new **user_env_compile** feature of Heroku (see above), this is no longer required or recommended. Yet was added for the following reasons:
-
-> With Rails 3.1 on the Heroku cedar stack, the deployment process automatically runs `rake assets:precompile`. If you are using **ENV** variable style configuration. Due to the methods with which Heroku compile slugs, there will be an error raised by asset\_sync as the environment is not available. This causes heroku to install the `rails31_enable_runtime_asset_compilation` plugin which is not necessary when using **cloud_tempfile** and also massively slows down the first incoming requests to your app.
-
-> To prevent this part of the deploy from failing (cloud_tempfile raising a config error), but carry on as normal set `fail_silently` to true in your configuration and ensure to run `heroku run rake assets:precompile` after deploy.
-
 ## Rake Task
 
 A rake task is included within the **cloud_tempfile** gem to perform the clean up:
