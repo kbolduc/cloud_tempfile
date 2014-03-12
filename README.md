@@ -198,12 +198,12 @@ production:
 A rake task is included within the **cloud_tempfile** gem to perform the clean up:
 
 ``` ruby
-  namespace :cloud_tempfile do
-    desc "Synchronize assets to S3"
-    task :sync => :environment do
-      CloudTempfile.sync
+    namespace :cloud_tempfile do
+      desc "Clean up expired temp files from the remote storage"
+      task :clear => :environment do
+        CloudTempfile.clear
+      end
     end
-  end
 ```
 
 ## Todo
