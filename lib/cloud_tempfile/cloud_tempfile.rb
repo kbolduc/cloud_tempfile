@@ -42,6 +42,7 @@ module CloudTempfile
     # == Options
     # [:+file_name+:] The file name to use for the Tempfile
     # [:+file_raw_data+:] The raw file data to be persisted
+    # [:+expiry+:] The expiry is the number of seconds the file will available publicly
     #
     # @param [Hash] options The Hash of options
     # @return [File]
@@ -53,9 +54,9 @@ module CloudTempfile
 
       with_config do
         if !(config && config.local?)
-          return self.storage.upload_file(_file_name, _file_raw_data)
+          return self.storage.upload_file(_file_name, _file_raw_data, options)
         else
-          return self.storage.local_file(_file_name, _file_raw_data)
+          return self.storage.local_file(_file_name, _file_raw_data, options)
         end
       end
     end

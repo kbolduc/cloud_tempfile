@@ -185,7 +185,7 @@ describe CloudTempfile::Storage do
       end
 
       file = @storage.upload_file(filename, file)
-      file.public_url.should be_nil if !@mock
+      file.public_url.should_not be_nil if !@mock
     end
 
     it 'has private visibility and expiry' do
@@ -207,7 +207,81 @@ describe CloudTempfile::Storage do
       end
 
       file = @storage.upload_file(filename, file)
-      file.public_url.should_not be_nil if !@mock
+      if !@mock
+        file.should_not be_nil
+        file.public_url.should_not be_nil
+        file.public_url.should include((Time.now.utc.to_i + @config.expiry).to_s.chop.chop)
+      end
+    end
+  end
+
+  describe 'AWS#upload_file with CloudTempfile private', :ignore => false do
+    before(:each) do
+      @config = CloudTempfile::Config.new
+      @config.enabled = true
+      @config.fog_provider = "AWS"
+      @config.aws_access_key_id = !@mock? ENV['AWS_ACCESS_KEY_ID'] : 'KEY'
+      @config.aws_secret_access_key = !@mock? ENV['AWS_SECRET_ACCESS_KEY'] : 'SECRET_KEY'
+      @config.fog_directory = !@mock? ENV['FOG_DIRECTORY'] : 'bucket'
+      @config.prefix = "tmp-test/"
+      @config.public = false
+      @config.expiry = 60
+
+      #Enable/Disable Fog mocking by enivronment variables for testing
+      @mock = ((ENV['RSPEC_MOCK'].nil?)? ((ENV['AWS_ACCESS_KEY_ID'].nil?)? true : ENV['AWS_ACCESS_KEY_ID']) : ENV['RSPEC_MOCK']=='true')
+      Fog.mock! if @mock
+
+      @storage = CloudTempfile::Storage.new(@config)
+    end
+
+    after(:each) do
+      Fog.unmock! if @mock
+    end
+
+
+    it 'should have the expiry set when private' do
+      filename = 'TEST.pdf'
+      file = File.open(File.dirname(__FILE__) + '/../fixtures/assets/' + filename)
+
+      if @mock
+        directory = double
+        files = double
+
+        @storage.stub(:directory).and_return(directory)
+        directory.stub(:files).and_return(files)
+
+        files.should_receive(:create)
+      end
+
+      file = @storage.upload_file(filename, file)
+      if !@mock
+        file.should_not be_nil
+        file.public_url.should_not be_nil
+        file.public_url.should include((Time.now.utc.to_i + @config.expiry).to_s.chop.chop)
+      end
+    end
+
+    it 'should accept the option to override the expiry when private' do
+      filename = 'TEST.pdf'
+      file = File.open(File.dirname(__FILE__) + '/../fixtures/assets/' + filename)
+
+      if @mock
+        directory = double
+        files = double
+
+        @storage.stub(:directory).and_return(directory)
+        directory.stub(:files).and_return(files)
+
+        files.should_receive(:create)
+      end
+
+      expiry = 1000
+      file = @storage.upload_file(filename, file, :expiry => expiry)
+      if !@mock
+        file.should_not be_nil
+        file.public_url.should_not be_nil
+        file.public_url.should include((Time.now.utc.to_i + expiry).to_s.chop.chop)
+      end
     end
   end
 

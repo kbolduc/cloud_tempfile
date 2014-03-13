@@ -26,7 +26,7 @@ module CloudTempfile
       @directory ||= connection.directories.get(self.config.fog_directory, :prefix => prefix)
     end
 
-    # This action will upload a AWS::File to the specified directory
+    # This action will upload a Fog::Storage::File to the specified directory
     # @return [Fog::Storage::File]
     def upload_file(f, body, options={})
       file = init_fog_file(f, body, options)
@@ -99,7 +99,7 @@ module CloudTempfile
 
       aws_acl = (self.config.aws_acl?)? self.config.aws_access_control_list.to_s : nil
       # expiry is the number of seconds the file will available publicly
-      expiry = (self.config.expiry?)? self.config.expiry.to_i : nil
+      expiry = options.has_key?(:expiry)? options[:expiry] : ((self.config.expiry?)? self.config.expiry.to_i : nil)
       ext = File.extname(filename)[1..-1] # The file extension
       mime = MultiMime.lookup(ext) # Look up the content type based off the file extension
       prefix = options.has_key?(:prefix)? options[:prefix] : self.config.prefix

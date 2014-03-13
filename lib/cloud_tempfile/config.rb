@@ -57,12 +57,13 @@ module CloudTempfile
 
       self.public = false
       self.prefix = "tmp/"
+      self.expiry = 600 # 10 Min = 600 Seconds
 
       self.fail_silently = false
       self.log_silently = true
 
       self.clean_up = false
-      self.clean_up_older_than = 600
+      self.clean_up_older_than = 86400 # 1 Day = 86400 Seconds
 
       load_yml! if defined?(Rails) && yml_exists?
     end
