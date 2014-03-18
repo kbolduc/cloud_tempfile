@@ -39,9 +39,8 @@ module CloudTempfile
     attr_accessor :log_silently
 
     # Validation #######################################################################################################
-    validates :public,                :presence => true
     validates :fog_provider,          :presence => true
-    validates :fog_directory,         :presence => true
+    validates :fog_directory,         :presence => true , :if => "!local?"
 
     validates :aws_access_key_id,     :presence => true, :if => :aws?
     validates :aws_secret_access_key, :presence => true, :if => :aws?
