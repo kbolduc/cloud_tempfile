@@ -51,8 +51,10 @@ module CloudTempfile
 
     ####################################################################################################################
     def initialize
+      self.enabled = true
       self.fog_region = nil
       self.fog_endpoint = '/'
+      self.fog_provider = 'Local'
 
       self.public = false
       self.prefix = "tmp/"
@@ -65,6 +67,7 @@ module CloudTempfile
       self.clean_up_older_than = 86400 # 1 Day = 86400 Seconds
 
       self.public_path = Rails.root.join 'public' if defined?(Rails)
+
       load_yml! if defined?(Rails) && yml_exists?
     end
 
@@ -116,7 +119,7 @@ module CloudTempfile
 
     def fog_options
       #If the CloudTempfile is disabled then revert to local file creation
-      @fog_provider = 'Local' if (!enabled? && !fog_provider.nil?)
+      @fog_provider = 'Local' if (@enabled != true)
 
       options = { :provider => fog_provider }
       if aws?
@@ -172,7 +175,7 @@ module CloudTempfile
     def load_yml!
       self.enabled                = yml["enabled"] if yml.has_key?('enabled')
 
-      self.fog_provider           = yml["fog_provider"]
+      self.fog_provider           = yml["fog_provider"] if yml.has_key?('fog_provider')
       self.fog_directory          = yml["fog_directory"]
       self.fog_region             = yml["fog_region"]
       self.fog_host               = yml["fog_host"] if yml.has_key?("fog_host")
@@ -189,6 +192,7 @@ module CloudTempfile
       self.clean_up_older_than    = yml["clean_up_older_than"] if yml.has_key?("clean_up_older_than")
       self.fail_silently          = yml["fail_silently"] if yml.has_key?("fail_silently")
       self.prefix                 = yml["prefix"] if yml.has_key?("prefix")
+      self.public                 = yml["public"] if yml.has_key?("public")
       self.public_path            = yml["public_path"] if yml.has_key?("public_path")
       self.expiry                 = yml["expiry"] if yml.has_key?("expiry")
     end

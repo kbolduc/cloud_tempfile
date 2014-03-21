@@ -15,9 +15,9 @@ describe CloudTempfile do
       end
     end
 
-    it "should default CloudTempfile to disabled" do
-      CloudTempfile.config.enabled?.should be_false
-      CloudTempfile.enabled?.should be_false
+    it "should default CloudTempfile to enabled" do
+      CloudTempfile.config.enabled?.should be_true
+      CloudTempfile.enabled?.should be_true
     end
 
     it "should configure provider as AWS" do
@@ -56,9 +56,9 @@ describe CloudTempfile do
       CloudTempfile.config = CloudTempfile::Config.new
     end
 
-    it "should default CloudTempfile to disabled" do
-      CloudTempfile.config.enabled?.should be_false
-      CloudTempfile.enabled?.should be_false
+    it "should default CloudTempfile to enabled" do
+      CloudTempfile.config.enabled?.should be_true
+      CloudTempfile.enabled?.should be_true
     end
 
     it "should configure aws_access_key_id" do
@@ -200,8 +200,8 @@ describe CloudTempfile do
       CloudTempfile.config = CloudTempfile::Config.new
     end
 
-    it "config should be invalid" do
-      CloudTempfile.config.valid?.should be_false
+    it "config should be valid" do
+      CloudTempfile.config.valid?.should be_true
     end
   end
 

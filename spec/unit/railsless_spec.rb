@@ -20,9 +20,9 @@ describe CloudTempfile do
       CloudTempfile.config.public_path.to_s.should == "./public"
     end
 
-    it "should default CloudTempfile to disabled" do
-      CloudTempfile.config.enabled?.should be_false
-      CloudTempfile.enabled?.should be_false
+    it "should default CloudTempfile to enabled" do
+      CloudTempfile.config.enabled?.should be_true
+      CloudTempfile.enabled?.should be_true
     end
 
     it "should configure provider as AWS" do
