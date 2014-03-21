@@ -64,6 +64,7 @@ module CloudTempfile
       self.clean_up = false
       self.clean_up_older_than = 86400 # 1 Day = 86400 Seconds
 
+      self.public_path = Rails.root.join 'public' if defined?(Rails)
       load_yml! if defined?(Rails) && yml_exists?
     end
 
@@ -75,9 +76,9 @@ module CloudTempfile
       public == true
     end
 
-    def public_path
-      @public_path || Rails.public_path
-    end
+    #def public_path
+    #  @public_path || Rails.public_path
+    #end
 
     def expiry?
       !expiry.nil? && expiry.kind_of?(Fixnum)
