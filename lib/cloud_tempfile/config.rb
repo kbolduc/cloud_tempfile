@@ -42,6 +42,9 @@ module CloudTempfile
     validates :fog_provider,          :presence => true
     validates :fog_directory,         :presence => true , :if => "!local?"
 
+    validates_numericality_of :expiry, :allow_blank => true
+    validates_numericality_of :clean_up_older_than, :allow_blank => true
+
     validates :aws_access_key_id,     :presence => true, :if => :aws?
     validates :aws_secret_access_key, :presence => true, :if => :aws?
     validates :rackspace_username,    :presence => true, :if => :rackspace?
@@ -84,7 +87,7 @@ module CloudTempfile
     #end
 
     def expiry?
-      !expiry.nil? && expiry.kind_of?(Fixnum)
+      !expiry.nil?
     end
 
     def aws?

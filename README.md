@@ -121,19 +121,19 @@ defaults: &defaults
   fog_directory: "rails-app-assets"
   aws_access_key_id: "<%= ENV['AWS_ACCESS_KEY_ID'] %>"
   aws_secret_access_key: "<%= ENV['AWS_SECRET_ACCESS_KEY'] %>"
+  # To use AWS reduced redundancy storage.
+  # (http://aws.amazon.com/about-aws/whats-new/2010/05/19/announcing-amazon-s3-reduced-redundancy-storage/)
+  # aws_reduced_redundancy: true
   # You may need to specify what region your storage bucket is in
   # fog_region: "eu-west-1"
   # Fail silently.  Useful for environments such as Heroku
   # fail_silently: true
 
-
 development:
-  <<: *defaults
-  enabled: false
+  enabled: true
 
 test:
-  <<: *defaults
-  enabled: false
+  enabled: true
 
 production:
   <<: *defaults
@@ -150,7 +150,7 @@ CloudTempfile.config.fog_provider == ENV['FOG_PROVIDER']
 #### CloudTempfile (optional)
 
 * **enabled**: (`true, false`) when false, will disable CloudTempfile and local Tempfile will be created instead.
-* **default:** `'false'` (disabled)
+* **default:** `'true'` (enabled)
 
 #### Fog (Required)
 * **fog\_provider**: your storage provider *AWS* (S3) or *Rackspace* (Cloud Files) or *Google* (Google Storage)

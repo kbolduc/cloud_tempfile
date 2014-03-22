@@ -120,7 +120,7 @@ module CloudTempfile
         end
         # valid acls: private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control
         file.merge!({:acl=>self.config.aws_access_control_list.to_s}) if self.config.aws_acl?
-        file.merge!({:expires => Time.now.utc.to_i + expiry}) if self.config.expiry?
+        file.merge!({:expires => Time.now.utc.to_i + expiry}) if !self.config.public? && self.config.expiry?
         file.merge!({:storage_class => 'REDUCED_REDUNDANCY'}) if self.config.aws_rrs?
       end
 
