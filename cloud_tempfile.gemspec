@@ -7,7 +7,7 @@ require "cloud_tempfile/version"
 Gem::Specification.new do |s|
   s.name        = "cloud_tempfile"
   s.version     = CloudTempfile::VERSION
-  s.date        = "2014-03-13"
+  s.date        = "2014-03-22"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Kevin Bolduc"]
   s.email       = ["kevin.bolduc@gmail.com"]

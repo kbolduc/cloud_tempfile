@@ -1,5 +1,12 @@
 # RELEASE HISTORY
 
+## v0.0.4 / 2014-03-22
+
+Version 0.0.4 (Kevin Bolduc)
+
+Changes:
+    * #7: When config.public is set to false it is generating a public url by default. This should be a private generated url.
+
 ## v0.0.3 / 2014-03-21
 
 Version 0.0.3 (Kevin Bolduc)
