@@ -1,5 +1,12 @@
 # RELEASE HISTORY
 
+## v0.0.5 / 2014-05-20
+
+Version 0.0.5 (Kevin Bolduc)
+
+Changes:
+    * Allow for the attachment disposition option
+
 ## v0.0.4 / 2014-03-22
 
 Version 0.0.4 (Kevin Bolduc)

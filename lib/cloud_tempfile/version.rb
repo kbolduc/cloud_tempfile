@@ -5,5 +5,5 @@
 # Time::      3:23 PM
 
 module CloudTempfile
-  VERSION = "0.0.4"
+  VERSION = "0.0.5"
 end
