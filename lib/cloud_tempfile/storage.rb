@@ -104,6 +104,7 @@ module CloudTempfile
       mime = MultiMime.lookup(ext) # Look up the content type based off the file extension
       prefix = options.has_key?(:prefix)? options[:prefix] : self.config.prefix
       full_filename = (self.config.local? || !self.config.enabled?)? filename : "#{prefix}#{filename}"
+      disposition_attachment = options.has_key?(:attachment)? options[:attachment] : false
 
       # file Hash to be used to create a Fog for upload
       file = {
@@ -111,6 +112,7 @@ module CloudTempfile
         :body => body,
         :content_type => mime
       }
+      file.merge!({:content_disposition => "attachment"})  if disposition_attachment
 
       file.merge!({:public => true}) if self.config.public?
 
