@@ -21,14 +21,15 @@ Gem::Specification.new do |s|
 
   s.add_dependency('fog', ">=1.36.0")
   s.add_dependency('activemodel')
-  s.add_dependency('mime-types', ">= 2.2")
+  s.add_dependency('mime-types')
 
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "bundler"
-  s.add_development_dependency "jeweler"
-
-  s.add_development_dependency "cloud_tempfile"
-  s.add_development_dependency "appraisal"
+  s.add_development_dependency(%q<rake>, [">= 0"])
+  s.add_development_dependency(%q<rdoc>, [">= 0"])
+  s.add_development_dependency(%q<bundler>, [">= 1.0"])
+  s.add_development_dependency(%q<builder>, [">= 0"])
+  s.add_development_dependency(%q<rspec>, [">= 0"])
+  s.add_development_dependency(%q<jeweler>, [">= 2.1.1"])
+  s.add_development_dependency(%q<appraisal>, [">= 0"])
 
   #s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   #s.test_files = Dir["{test,spec,features}/**/*"]

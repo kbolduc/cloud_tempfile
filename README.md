@@ -216,6 +216,10 @@ A rake task is included within the **cloud_tempfile** gem to perform the clean u
     end
 ```
 
+## Packaging and Contributing
+
+To automate the packaging of this gem, please use [Jeweler](https://github.com/technicalpickles/jeweler)
+
 ## Todo
 
 1. Support more cloud storage providers
