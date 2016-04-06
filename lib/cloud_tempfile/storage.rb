@@ -62,7 +62,7 @@ module CloudTempfile
     def get_remote_files
       raise BucketNotFound.new("#{self.config.fog_provider} Bucket: #{self.config.fog_directory} not found.") unless directory
       files = []
-      directory.files.each { |f| files << f.key if File.extname(f.key).present? }
+      directory.files.each { |f| files << f if File.extname(f.key).present? }
       return files
     end
 
@@ -74,10 +74,10 @@ module CloudTempfile
       return if !self.config.clean_up? || !self.config.enabled?
       log "CloudTempfile.delete_expired_tempfiles is running..."
       # Delete expired temp files
-      get_remote_files.each do |f|
-        f = directory.files.get(f)
-        if f.last_modified <= self.config.clean_up_older_than.ago
-          delete_file(f)
+      fog_files = (self.config.local?)? local_root.files : get_remote_files
+      fog_files.each do |file|
+        if file.last_modified <= Time.now.utc.ago(self.config.clean_up_older_than)
+          delete_file(file)
         end
       end
       log "CloudTempfile.delete_expired_tempfiles is complete!"
