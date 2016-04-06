@@ -16,18 +16,19 @@ Gem::Specification.new do |s|
   s.description = %q{Tempfile creation directly on cloud storage (S3, Google, Rackspace etc] which can be utilized in a Ruby application}
   s.license     = 'MIT'
 
+  s.required_ruby_version = Gem::Requirement.new(">= 1.9.2")
   # rubyforge
   s.rubyforge_project = "cloud_tempfile"
 
-  s.add_dependency('fog', ">=1.36.0")
-  s.add_dependency('activemodel')
-  s.add_dependency('mime-types')
+  s.add_dependency 'fog', '~> 1.36'
+  s.add_dependency 'activemodel'
+  s.add_dependency 'mime-types', '~> 2.6'
 
   s.add_development_dependency(%q<rake>, [">= 0"])
   s.add_development_dependency(%q<rdoc>, [">= 0"])
   s.add_development_dependency(%q<bundler>, [">= 1.0"])
   s.add_development_dependency(%q<builder>, [">= 0"])
-  s.add_development_dependency(%q<rspec>, [">= 0"])
+  s.add_development_dependency(%q<rspec>, ["~> 2.14"])
   s.add_development_dependency(%q<jeweler>, [">= 2.1.1"])
   s.add_development_dependency(%q<appraisal>, [">= 0"])
 
