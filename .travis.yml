@@ -1,6 +1,5 @@
 language: ruby
 rvm:
-  - 1.9.2
   - 1.9.3
   - 2.0.0
   - 2.2.2
@@ -20,10 +19,6 @@ addons:
     repo_token: 08219ed943b69ed2db93fc18ecd00f72f6dabc4cdb9792e22a731c0ff2c2b818
 matrix:
   include:
-    - rvm: 1.9.2
-      gemfile: gemfiles/rails_3.2.gemfile
-    - rvm: 1.9.2
-      gemfile: gemfiles/rails_4.0.gemfile
     - rvm: 1.9.3
       gemfile: gemfiles/rails_3.2.gemfile
     - rvm: 1.9.3

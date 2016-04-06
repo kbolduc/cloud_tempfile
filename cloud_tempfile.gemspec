@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.description = %q{Tempfile creation directly on cloud storage (S3, Google, Rackspace etc] which can be utilized in a Ruby application}
   s.license     = 'MIT'
 
-  s.required_ruby_version = Gem::Requirement.new(">= 1.9.2")
+  s.required_ruby_version = Gem::Requirement.new(">= 1.9.3")
   # rubyforge
   s.rubyforge_project = "cloud_tempfile"
 
