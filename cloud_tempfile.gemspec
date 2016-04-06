@@ -19,8 +19,9 @@ Gem::Specification.new do |s|
   # rubyforge
   s.rubyforge_project = "cloud_tempfile"
 
-  s.add_dependency('fog', ">= 1.8.0")
+  s.add_dependency('fog', ">=1.36.0")
   s.add_dependency('activemodel')
+  s.add_dependency('mime-types', ">= 2.2")
 
   s.add_development_dependency "rspec"
   s.add_development_dependency "bundler"
