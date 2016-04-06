@@ -1,7 +1,7 @@
 require 'fog'
 require 'active_model'
 require 'erb'
-require "ext/fog/aws/models/storage/file"
+require 'ext/fog/aws/models/storage/file'
 require 'cloud_tempfile/cloud_tempfile'
 require 'cloud_tempfile/config'
 require 'cloud_tempfile/storage'

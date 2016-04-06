@@ -6,6 +6,8 @@
 # Date::      14-02-24
 # Time::      3:23 PM
 
+require 'mime/types'
+
 module CloudTempfile
   class MultiMime
     def self.lookup(ext)

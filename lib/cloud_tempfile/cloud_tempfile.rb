@@ -21,7 +21,7 @@ module CloudTempfile
     end
 
     def config
-      @config ||= Config.new
+      @config ||= CloudTempfile::Config.new
       @config
     end
 
@@ -30,12 +30,12 @@ module CloudTempfile
     end
 
     def configure(&proc)
-      @config ||= Config.new
+      @config ||= CloudTempfile::Config.new
       yield @config
     end
 
     def storage
-      @storage ||= Storage.new(self.config)
+      @storage ||= CloudTempfile::Storage.new(self.config)
     end
 
     # This action will responsible for persisting the Tempfile
@@ -80,7 +80,7 @@ module CloudTempfile
         if config.fail_silently?
           self.warn(errors)
         else
-          raise Config::Invalid.new(errors)
+          raise CloudTempfile::Config::Invalid.new(errors)
         end
       else
         block.call
