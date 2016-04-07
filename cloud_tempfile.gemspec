@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'fog', '~> 1.36'
   s.add_dependency 'activemodel'
-  s.add_dependency 'mime-types', '~> 2.6'
+  s.add_dependency 'mime-types', '<= 2.99.1'
 
   s.add_development_dependency(%q<rake>, [">= 0"])
   s.add_development_dependency(%q<rdoc>, [">= 0"])
