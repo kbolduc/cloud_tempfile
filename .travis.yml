@@ -1,12 +1,9 @@
 language: ruby
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.2.2
-  - ruby-head
+  - 2.3.8
+  - 2.4.5
+  - 2.5.3
 gemfile:
-  - gemfiles/rails_3.1.gemfile
-  - gemfiles/rails_3.2.gemfile
   - gemfiles/rails_4.0.gemfile
   - gemfiles/rails_4.1.gemfile
   - gemfiles/rails_4.2.gemfile
@@ -19,25 +16,21 @@ addons:
     repo_token: 08219ed943b69ed2db93fc18ecd00f72f6dabc4cdb9792e22a731c0ff2c2b818
 matrix:
   include:
-    - rvm: 1.9.3
-      gemfile: gemfiles/rails_3.2.gemfile
-    - rvm: 1.9.3
+    - rvm: 2.3.8
       gemfile: gemfiles/rails_4.0.gemfile
-    - rvm: 2.0.0
-      gemfile: gemfiles/rails_3.2.gemfile
-    - rvm: 2.0.0
-      gemfile: gemfiles/rails_4.0.gemfile
-    - rvm: 2.0.0
+    - rvm: 2.3.8
       gemfile: gemfiles/rails_4.1.gemfile
-    - rvm: 2.0.0
+    - rvm: 2.3.8
       gemfile: gemfiles/rails_4.2.gemfile
-    - rvm: 2.2.2
+    - rvm: 2.4.5
       gemfile: gemfiles/rails_4.0.gemfile
-    - rvm: 2.2.2
+    - rvm: 2.4.5
       gemfile: gemfiles/rails_4.1.gemfile
-    - rvm: 2.2.2
+    - rvm: 2.4.5
       gemfile: gemfiles/rails_4.2.gemfile
-    - rvm: ruby-head
+    - rvm: 2.5.3
+      gemfile: gemfiles/rails_4.0.gemfile
+    - rvm: 2.5.3
+      gemfile: gemfiles/rails_4.1.gemfile
+    - rvm: 2.5.3
       gemfile: gemfiles/rails_4.2.gemfile
-  allow_failures:
-    - rvm: ruby-head
