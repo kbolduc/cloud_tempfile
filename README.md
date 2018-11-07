@@ -1,6 +1,5 @@
 [![Build Status](https://secure.travis-ci.org/kbolduc/cloud_tempfile.png)](http://travis-ci.org/kbolduc/cloud_tempfile)
 [![Code Climate](https://codeclimate.com/github/kbolduc/cloud_tempfile.png)](https://codeclimate.com/github/kbolduc/cloud_tempfile)
-[![Coverage Status](https://coveralls.io/repos/github/kbolduc/cloud_tempfile/badge.svg?branch=master)](https://coveralls.io/github/kbolduc/cloud_tempfile?branch=master)
 [![Gem Version](https://badge.fury.io/rb/cloud_tempfile.png)](http://badge.fury.io/rb/cloud_tempfile)
 
 # CloudTempfile
