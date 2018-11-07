@@ -21,8 +21,8 @@ describe CloudTempfile do
     end
 
     it "should default CloudTempfile to enabled" do
-      CloudTempfile.config.enabled?.should be_true
-      CloudTempfile.enabled?.should be_true
+      CloudTempfile.config.enabled?.should == true
+      CloudTempfile.enabled?.should == true
     end
 
     it "should configure provider as AWS" do

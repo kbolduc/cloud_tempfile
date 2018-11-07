@@ -16,8 +16,8 @@ describe CloudTempfile do
     end
 
     it "should default CloudTempfile to enabled" do
-      CloudTempfile.config.enabled?.should be_true
-      CloudTempfile.enabled?.should be_true
+      CloudTempfile.config.enabled?.should == true
+      CloudTempfile.enabled?.should == true
     end
 
     it "should configure provider as AWS" do
@@ -46,7 +46,7 @@ describe CloudTempfile do
     end
 
     it "should default log_silently to true" do
-      CloudTempfile.config.log_silently.should be_true
+      CloudTempfile.config.log_silently.should == true
     end
   end
 
@@ -57,8 +57,8 @@ describe CloudTempfile do
     end
 
     it "should default CloudTempfile to enabled" do
-      CloudTempfile.config.enabled?.should be_true
-      CloudTempfile.enabled?.should be_true
+      CloudTempfile.config.enabled?.should == true
+      CloudTempfile.enabled?.should == true
     end
 
     it "should configure aws_access_key_id" do
@@ -156,7 +156,7 @@ describe CloudTempfile do
     end
 
     it "config.aws_rrs? should be true" do
-      CloudTempfile.config.aws_rrs?.should be_true
+      CloudTempfile.config.aws_rrs?.should == true
     end
   end
 
@@ -178,7 +178,7 @@ describe CloudTempfile do
     end
 
     it "config.public? should be true" do
-      CloudTempfile.config.public?.should be_true
+      CloudTempfile.config.public?.should == true
     end
   end
 
@@ -189,7 +189,7 @@ describe CloudTempfile do
     end
 
     it "config.clean_up? should be true" do
-      CloudTempfile.config.clean_up?.should be_true
+      CloudTempfile.config.clean_up?.should == true
     end
   end
 
@@ -201,7 +201,7 @@ describe CloudTempfile do
     end
 
     it "config should be valid" do
-      CloudTempfile.config.valid?.should be_true
+      CloudTempfile.config.valid?.should == true
     end
   end
 

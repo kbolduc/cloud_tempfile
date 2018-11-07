@@ -24,13 +24,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'activemodel'
   s.add_dependency 'mime-types', '<= 2.99.1'
 
-  s.add_development_dependency(%q<rake>, [">= 0"])
-  s.add_development_dependency(%q<rdoc>, [">= 0"])
-  s.add_development_dependency(%q<bundler>, [">= 1.0"])
-  s.add_development_dependency(%q<builder>, [">= 0"])
-  s.add_development_dependency(%q<rspec>, ["~> 2.14"])
-  s.add_development_dependency(%q<jeweler>, [">= 2.1.1"])
-  s.add_development_dependency(%q<appraisal>, [">= 0"])
+  s.add_development_dependency 'bundler', '~> 1.17'
+  s.add_development_dependency 'rake', '~> 11.3'
+  s.add_development_dependency 'rdoc', '>= 0'
+  s.add_development_dependency 'builder', '>= 0'
+  s.add_development_dependency 'rspec', '~> 2.99', '< 3'
+  s.add_development_dependency 'jeweler', '>= 2.1.1'
+  s.add_development_dependency 'appraisal', '>= 0'
 
   #s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   #s.test_files = Dir["{test,spec,features}/**/*"]
